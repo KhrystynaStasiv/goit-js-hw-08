@@ -79,11 +79,11 @@ function imagesTemplate(arr) {
 }
 
 const markup = imagesTemplate(images);
-
 container.innerHTML = markup;
 
 container.addEventListener('click', e => {
   e.preventDefault();
+
   if (e.target === e.currentTarget) return;
   const liElem = e.target.closest('li');
   console.log(liElem);
@@ -95,13 +95,11 @@ container.addEventListener('click', e => {
 });
 
 function showModal(image) {
-  const markup = `<li class="gallery-item">
-            <a class="gallery-link" href="${image.original}">
-                <img class="gallery-image" src="${image.preview}" data-source="${image.original}" alt="${image.description}" />
-            </a>
-            </li>`;
-  const instance = basicLightbox.create(`
-  const img = e.target.dataset.source;
-  document.showModal.style.background = img;`);
+  const markup = `<img
+                    class="gallery-image"
+                    src="${image.original}"
+                    alt="${image.description}"
+                  />`;
+  const instance = basicLightbox.create(markup);
   instance.show();
 }
